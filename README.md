@@ -1,3 +1,4 @@
+## Blog 1
 ## Type Inference in TypeScript
 
 TypeScript is a statically typed superset of JavaScript, i.e., TypeScript extends JavaScript with optional static typing. One of its most powerful and easiest features is Type Inference.
@@ -56,3 +57,72 @@ function logValue(value) {
 function logValue(value: string | number) {
   console.log(value);
 }
+
+
+## Blog 2
+🔀 Understanding Union and Intersection Types in TypeScript
+TypeScript is powerful because of its advanced type system. Among its core features are Union Types and Intersection Types — tools that let you write flexible, type-safe code.
+
+In this post, we’ll explore what they are, when to use them, and how they differ — with clear examples.
+
+🔹 What Are Union Types?
+A Union Type allows a value to be one of several types.
+
+🔧 Syntax:
+ts
+Copy
+Edit
+type AorB = TypeA | TypeB;
+📦 Example:
+ts
+Copy
+Edit
+function printId(id: string | number) {
+  if (typeof id === "string") {
+    console.log("ID (string):", id.toUpperCase());
+  } else {
+    console.log("ID (number):", id.toFixed(2));
+  }
+}
+
+printId("abc123"); // ID (string): ABC123
+printId(42);       // ID (number): 42.00
+✅ Use union types when a value can belong to one of many types, and you want to handle each possibility.
+
+🔹 What Are Intersection Types?
+An Intersection Type combines multiple types into one.
+The resulting type has all properties from the intersected types.
+
+🔧 Syntax:
+ts
+Copy
+Edit
+type AandB = TypeA & TypeB;
+📦 Example:
+ts
+Copy
+Edit
+type Person = {
+  name: string;
+};
+
+type Employee = {
+  employeeId: number;
+};
+
+type Staff = Person & Employee;
+
+const staffMember: Staff = {
+  name: "Raisa",
+  employeeId: 1001,
+};
+
+console.log(`${staffMember.name} - ID: ${staffMember.employeeId}`);
+✅ Use intersection types when you need a combination of multiple types.
+
+⚖️ Union vs Intersection — The Difference
+| Feature | Union (|) | Intersection (&) |
+|------------------|----------------------------------|---------------------------------------|
+| Meaning | Either one or the other | Both at the same time |
+| Flexibility | More flexible, less strict | More strict, combines all properties |
+| Usage scenario | Handling multiple possible types | Composing new types from others |
