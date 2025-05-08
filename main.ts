@@ -8,7 +8,7 @@ function formatString(input: string, toUpper: boolean = true): string {
   }
 
 function concatenateArrays<T>(...arrays: T[][]): T[] {
-    return ([] as T[]).concat(...arrays); // Explicit type annotation
+    return ([] as T[]).concat(...arrays); 
   }
   
 
